@@ -18,7 +18,7 @@ const LibraryDataCard = ({ data }: IDataPropsTypes) => {
     rating,
   } = data;
   return (
-    <div className="bg-[#ffffff1c] rounded-4xl border border-[#80808096]  h-fit">
+    <div className="bg-[#ffffff1c] rounded-4xl border border-[#80808096]  h-fit  hover:border-[#C2F800] duration-300">
       <div className="w-full h-70">
         <Image
           className="w-full h-full object-cover rounded-t-4xl col-span-2"
