@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaRegStar } from "react-icons/fa6";
 import { IoMdTime } from "react-icons/io";
 import { PiFireSimpleFill } from "react-icons/pi";
@@ -16,9 +17,13 @@ const LibraryDataCard = ({ data }: IDataPropsTypes) => {
     duration,
     caloriesBurned,
     rating,
+    id,
   } = data;
   return (
-    <div className="bg-[#ffffff1c] rounded-4xl border border-[#80808096]  h-fit  hover:border-[#C2F800] duration-300">
+    <Link
+      href={`/${id}`}
+      className="bg-[#ffffff1c] rounded-4xl border border-[#80808096]  h-fit  hover:border-[#C2F800] duration-300"
+    >
       <div className="w-full h-70">
         <Image
           className="w-full h-full object-cover rounded-t-4xl col-span-2"
@@ -56,7 +61,7 @@ const LibraryDataCard = ({ data }: IDataPropsTypes) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

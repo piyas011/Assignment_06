@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <div className=" h-auto md:h-120.5 bg-[#ffffff1c] mt-15 p-10 rounded-3xl grid grid-cols-1 md:grid-cols-2 items-center container mx-auto gap-5  ">
+    <div className=" h-auto md:h-120.5 bg-[#ffffff1c] mt-30 p-10 rounded-3xl grid grid-cols-1 md:grid-cols-2 items-center container mx-auto gap-5  ">
       <div className=" text-white p-4 ">
         <p className="text-[14px] font-bold text-[#C2F800]">WORKOUT LIBRARY</p>
         <h1 className="text-5xl font-bold mb-4 leading-15 my-4 tracking-[-2px]">

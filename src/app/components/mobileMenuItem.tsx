@@ -6,10 +6,7 @@ const MobileMenuItem = () => {
     <div>
       <div className="bg-[#3B3B3B] rounded-2xl text-white p-4 ">
         <nav className="flex flex-col  gap-5 ">
-          <Link
-            className="px-4 py-2 border border-white rounded-lg"
-            href="/workouts"
-          >
+          <Link className="px-4 py-2 border border-white rounded-lg" href="/">
             Workouts
           </Link>
           <Link
