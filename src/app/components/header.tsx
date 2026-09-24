@@ -27,8 +27,8 @@ const HeaderSection = () => {
         </div>
         <nav className="hidden sm:flex gap-2">
           <Link
-            className={`px-4 py-2 ${pathName === "/workouts" || "" ? "bg-[#4a5243] rounded-4xl text-[#C2F800]" : ""}`}
-            href="/workouts"
+            className={`px-4 py-2 ${pathName === "/" ? "bg-[#4a5243] rounded-4xl text-[#C2F800]" : ""}`}
+            href="/"
           >
             Workouts
           </Link>
