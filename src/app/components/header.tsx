@@ -17,7 +17,7 @@ const HeaderSection = () => {
   };
 
   return (
-    <div className="border-b border-[#ffffff3b] pb-4">
+    <div className="border-b border-[#ffffff3b] pb-4 bg-[#3b3b3b] ">
       <div className="container mx-auto py-2 flex justify-between items-center text-white">
         <div>
           <Link className="flex items-center text-2xl font-bold gap-2" href="/">
