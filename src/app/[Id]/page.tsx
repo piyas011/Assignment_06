@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { FaRegBookmark } from "react-icons/fa6";
 import AddToTodaysPlanButton from "../components/addToTodaysPlanButton";
+import AddToSaveButton from "../components/addToSaveButton";
 
 const LibraryDetailsPage = async ({ params }: { params: { Id: string } }) => {
   const { Id } = await params;
@@ -94,9 +94,7 @@ const LibraryDetailsPage = async ({ params }: { params: { Id: string } }) => {
           </div>
           <div className="flex  flex-col md:flex-row gap-4 items-center mt-5">
             <AddToTodaysPlanButton data={data} />
-            <button className="mr-10 font-bold py-3 px-5 text-[18px] rounded-lg border border-gray-200 flex justify-center items-center gap-2 cursor-pointer">
-              <FaRegBookmark /> Save for later
-            </button>
+            <AddToSaveButton data={data} />
           </div>
         </div>
       </div>

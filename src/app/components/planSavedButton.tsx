@@ -4,6 +4,7 @@ import { context } from "@/context/provider";
 import { useContext, useState } from "react";
 import EmptyPlan from "./emptyPlan";
 import TodaysPlan from "./todaysPlan";
+import Save from "./save";
 
 const PlanSavedButton = () => {
   const active = " border-[#9ca3af7c]  text-white bg-[#9ca3af56]";
@@ -33,9 +34,17 @@ const PlanSavedButton = () => {
         </button>
       </div>
       <div
-        className={`border border-dashed rounded-2xl border-[#9ca3af63] h-100`}
+        className={`border border-dashed rounded-2xl border-[#9ca3af63] p-4`}
       >
-        <div>{plan.length === 0 ? <EmptyPlan /> : <TodaysPlan />}</div>
+        <div>
+          {plan.length === 0 ? (
+            <EmptyPlan />
+          ) : click === "tody" ? (
+            <TodaysPlan />
+          ) : (
+            <Save />
+          )}
+        </div>
       </div>
     </div>
   );

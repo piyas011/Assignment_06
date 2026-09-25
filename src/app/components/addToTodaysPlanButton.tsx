@@ -14,11 +14,41 @@ const AddToTodaysPlanButton = ({ data }: { data: IData }) => {
   };
   const isAlreadyAdded = plan.some((item) => item.id === data.id);
 
+  const {
+    exercises,
+    setExercises,
+    minutes,
+    setMinutes,
+    calories,
+    setCalories,
+  } = useContext(context) as {
+    exercises: number;
+    setExercises: Dispatch<SetStateAction<number>>;
+
+    minutes: number;
+    setMinutes: Dispatch<SetStateAction<number>>;
+
+    calories: number;
+    setCalories: Dispatch<SetStateAction<number>>;
+  };
+
   const handelTodaysPlan = () => {
     if (isAlreadyAdded) return;
+
+    if (plan.length >= 5) {
+      toast.error("Today's plan can contain maximum 5 workouts!");
+      return;
+    }
+
     setPlan([...plan, data]);
-    toast.success("Successfully added Todays Plan!");
+
     setPlanCount(planCount + 1);
+
+    setExercises(exercises + 1);
+    setMinutes(minutes + data.duration);
+    setCalories(calories + data.caloriesBurned);
+
+    toast.success("Successfully added Today's Plan!");
   };
 
   return (

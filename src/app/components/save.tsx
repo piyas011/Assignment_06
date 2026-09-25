@@ -1,18 +1,16 @@
-"use client";
-
 import { context } from "@/context/provider";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
-import { FaClock, FaFire, FaStar, FaCheck } from "react-icons/fa";
+import { FaCheck, FaClock, FaFire, FaStar } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 
-const TodaysPlan = () => {
-  const { plan } = useContext(context) as { plan: IData[] };
+const Save = () => {
+  const { save } = useContext(context) as { save: IData[] };
 
   return (
     <div className="space-y-3">
-      {plan.map((data) => (
+      {save.map((data) => (
         <div
           key={data.id}
           className="flex items-center gap-3 rounded-lg bg-[#ffffff0e] p-2.5"
@@ -79,4 +77,4 @@ const TodaysPlan = () => {
   );
 };
 
-export default TodaysPlan;
+export default Save;

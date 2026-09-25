@@ -6,19 +6,38 @@ export const context = createContext({});
 
 const Provider = ({ children }: { children: ReactNode }) => {
   const [plan, setPlan] = useState([]);
-  const [saved, setSaved] = useState([]);
+  const [save, setSave] = useState([]);
   const [planCount, setPlanCount] = useState(0);
   const [saveCount, setSaveCount] = useState(0);
+  const [exercises, setExercises] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [calories, setCalories] = useState(0);
+  // /////////////////////
+  const [saveExercises, setSaveExercises] = useState(0);
+  const [saveMinutes, setSaveMinutes] = useState(0);
+  const [saveCalories, setSaveCalories] = useState(0);
   //   console.log(plan, "main provider plan");
   const sharedData = {
     plan,
     setPlan,
-    saved,
-    setSaved,
+    save,
+    setSave,
     planCount,
     setPlanCount,
     saveCount,
     setSaveCount,
+    exercises,
+    setExercises,
+    minutes,
+    setMinutes,
+    calories,
+    setCalories,
+    saveExercises,
+    setSaveExercises,
+    saveMinutes,
+    setSaveMinutes,
+    saveCalories,
+    setSaveCalories,
   };
 
   return <context.Provider value={sharedData}>{children}</context.Provider>;
