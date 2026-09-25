@@ -6,13 +6,13 @@ import { CiCalendarDate } from "react-icons/ci";
 import { toast, ToastContainer } from "react-toastify";
 
 const AddToTodaysPlanButton = ({ data }: { data: IData }) => {
-  const { plan, setPlan } = useContext(context) as {
+  const { plan, setPlan, planCount, setPlanCount } = useContext(context) as {
     plan: IData[];
     setPlan: Dispatch<SetStateAction<IData[]>>;
+    planCount: number;
+    setPlanCount: Dispatch<SetStateAction<number>>;
   };
   const isAlreadyAdded = plan.some((item) => item.id === data.id);
-  const { planCount, setPlanCount, saveCount, setSaveCount } =
-    useContext(context);
 
   const handelTodaysPlan = () => {
     if (isAlreadyAdded) return;
