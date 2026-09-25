@@ -3,14 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
 import MobileMenuItem from "./mobileMenuItem";
 import { MdClose } from "react-icons/md";
+import { context } from "@/context/provider";
 
 const HeaderSection = () => {
   const pathName = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { planCount, setPlanCount, saveCount, setSaveCount } =
+    useContext(context);
 
   const handelToggleMenu = (menuClicked: boolean) => {
     setMenuOpen(menuClicked);
@@ -44,7 +47,7 @@ const HeaderSection = () => {
             <button className="border px-4 py-1 pr-0.5 cursor-pointer rounded-2xl border-gray-200">
               Plan{" "}
               <span className="bg-[#C2F800] px-2 py-1 rounded-full text-black font-bold ml-2 ">
-                0
+                {planCount}
               </span>
             </button>
           </Link>
@@ -52,7 +55,7 @@ const HeaderSection = () => {
             <button className="border px-4 py-1 pr-0.5 cursor-pointer rounded-2xl border-gray-200">
               Saved{" "}
               <span className="bg-[#C2F800] px-2 py-1 rounded-full text-black font-bold ml-2 ">
-                0
+                {saveCount}
               </span>
             </button>
           </Link>
