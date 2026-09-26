@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useContext, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
 import MobileMenuItem from "./mobileMenuItem";
 import { MdClose } from "react-icons/md";
@@ -12,8 +12,10 @@ import { context } from "@/context/provider";
 const HeaderSection = () => {
   const pathName = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const { planCount, setPlanCount, saveCount, setSaveCount } =
-    useContext(context);
+  const { planCount, saveCount } = useContext(context) as {
+    planCount: number;
+    saveCount: number;
+  };
 
   const handelToggleMenu = (menuClicked: boolean) => {
     setMenuOpen(menuClicked);
