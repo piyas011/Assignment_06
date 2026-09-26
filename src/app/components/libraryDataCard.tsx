@@ -22,42 +22,52 @@ const LibraryDataCard = ({ data }: IDataPropsTypes) => {
   return (
     <Link
       href={`/${id}`}
-      className="bg-[#ffffff1c] rounded-4xl border border-[#80808096]  h-fit  hover:border-[#C2F800] duration-300"
+      className="h-fit rounded-4xl border border-[#80808096] bg-[#ffffff1c] duration-300 hover:border-[#C2F800]"
     >
-      <div className="w-full h-70">
+      <div className="h-55 w-full sm:h-60 md:h-65 lg:h-70">
         <Image
-          className="w-full h-full object-cover rounded-t-4xl col-span-2"
+          className="h-full w-full rounded-t-4xl object-cover col-span-2"
           src={image}
           alt={name}
           width={200}
           height={200}
         />
       </div>
-      <div className="p-5 col-span-1 ">
-        <div className="flex gap-3 my-2">
+
+      <div className="p-4 sm:p-5 col-span-1">
+        <div className="my-2 flex flex-wrap gap-2 sm:gap-3">
           {muscleGroups.map((group) => (
             <p
-              className="bg-[#C2F800] text-black font-bold px-3 py-1 rounded-4xl"
+              className="rounded-4xl bg-[#C2F800] px-2.5 py-1 text-xs font-bold text-black sm:px-3 sm:text-sm"
               key={group}
             >
               {group}
             </p>
           ))}
         </div>
-        <h2 className="text-[20px] font-bold">{name.toUpperCase()}</h2>
-        <p className="my-2 text-[#9CA3AF]">{equipment}</p>
-        <hr className=" h-0.5 text-[#80808096]  mb-5" />
-        <div className="flex gap-5 text-[#9CA3AF]">
-          <p className="flex justify-center items-center gap-2">
-            <IoMdTime /> {duration} min
+
+        <h2 className="text-lg font-bold sm:text-[20px]">
+          {name.toUpperCase()}
+        </h2>
+
+        <p className="my-2 text-sm text-[#9CA3AF] sm:text-base">{equipment}</p>
+
+        <hr className="mb-4 border-[#80808096] sm:mb-5" />
+
+        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-[#9CA3AF] sm:gap-5 sm:text-sm">
+          <p className="flex items-center gap-1.5 sm:gap-2">
+            <IoMdTime />
+            {duration} min
           </p>
-          <p className="flex justify-center items-center gap-2">
-            <PiFireSimpleFill /> {caloriesBurned} kcal
+
+          <p className="flex items-center gap-1.5 sm:gap-2">
+            <PiFireSimpleFill />
+            {caloriesBurned} kcal
           </p>
-          <p className="flex justify-center items-center gap-2">
-            {" "}
+
+          <p className="flex items-center gap-1.5 sm:gap-2">
             <FaRegStar />
-            {rating}{" "}
+            {rating}
           </p>
         </div>
       </div>

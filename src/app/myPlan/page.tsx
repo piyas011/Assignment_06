@@ -26,7 +26,6 @@ const MyPlanPage = () => {
   };
 
   // console.log(exercises, "exercises", saveExercises, "saveExercises");
-
   // const [activeTab, setActiveTab] = useState<"plan" | "save">("plan");
 
   return (

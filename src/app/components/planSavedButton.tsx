@@ -10,6 +10,7 @@ const PlanSavedButton = () => {
   const active = " border-[#9ca3af7c]  text-white bg-[#9ca3af56]";
   const { plan, setActiveTab } = useContext(context) as {
     plan: IData[];
+
     setActiveTab: Dispatch<SetStateAction<"tody" | "save">>;
   };
 
@@ -22,25 +23,64 @@ const PlanSavedButton = () => {
   };
 
   return (
-    <div>
-      <div className="my-10 bg-[#9ca3af1e] inline-block  rounded-[10px] text-[#9CA3AF] p-1.5 ">
+    <div className="w-full">
+      {/* Tabs */}
+      <div
+        className="
+      my-6 inline-flex max-w-full
+      rounded-[10px]
+      bg-[#9ca3af1e]
+      p-1.5
+      text-[#9CA3AF]
+
+      sm:my-10
+    "
+      >
         <button
           onClick={() => handelClickButton("tody")}
-          className={` py-3 px-8 rounded-[10px] cursor-pointer  ${click === "tody" ? active : ""}`}
+          className={`
+        cursor-pointer rounded-[10px]
+        px-4 py-2.5
+        text-sm
+        transition
+
+        sm:px-8 sm:py-3 sm:text-base
+
+        ${click === "tody" ? active : ""}
+      `}
         >
           Today&apos;s Plan
         </button>
+
         <button
           onClick={() => handelClickButton("save")}
-          className={` py-3 px-8 rounded-[10px] cursor-pointer  ${click === "save" ? active : ""}`}
+          className={`
+        cursor-pointer rounded-[10px]
+        px-4 py-2.5
+        text-sm
+        transition
+
+        sm:px-8 sm:py-3 sm:text-base
+
+        ${click === "save" ? active : ""}
+      `}
         >
           Saved
         </button>
       </div>
+
+      {/* Content */}
       <div
-        className={`border border-dashed rounded-2xl border-[#9ca3af63] p-4`}
+        className="
+      w-full
+      rounded-2xl
+      border border-dashed border-[#9ca3af63]
+      p-3
+
+      sm:p-4
+    "
       >
-        <div>
+        <div className="w-full min-w-0">
           {plan.length === 0 ? (
             <EmptyPlan />
           ) : click === "tody" ? (

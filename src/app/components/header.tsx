@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext, useState } from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
-import MobileMenuItem from "./mobileMenuItem";
+// import MobileMenuItem from "./mobileMenuItem";
 import { MdClose } from "react-icons/md";
 import { context } from "@/context/provider";
 
@@ -22,54 +22,213 @@ const HeaderSection = () => {
   };
 
   return (
-    <div className="border-b border-[#ffffff3b] py-4 bg-[#3b3b3b] fixed top-0 right-0 left-0 p-5">
-      <div className="container mx-auto py-2 flex justify-between items-center text-white ">
-        <div>
-          <Link className="flex items-center text-2xl font-bold gap-2" href="/">
-            <Image src="/favicon.png" alt="Logo" width={35} height={35}></Image>
-            FITLOG
-          </Link>
-        </div>
-        <nav className="hidden sm:flex gap-2">
-          <Link
-            className={`px-4 py-2 ${pathName === "/" ? "bg-[#4a5243] rounded-4xl text-[#C2F800]" : ""}`}
-            href="/"
+    <div className="fixed left-0 right-0 top-0 z-50 border-b border-[#ffffff3b] bg-[#3b3b3b]">
+      <div className="container mx-auto px-4 sm:px-6">
+        {/* ================= MAIN NAVBAR ================= */}
+        <div className="flex h-20 items-center justify-between">
+          {/* ================= LOGO ================= */}
+          <div>
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-xl font-bold sm:text-2xl"
+            >
+              <Image
+                src="/favicon.png"
+                alt="FitLog Logo"
+                width={35}
+                height={35}
+              />
+              FITLOG
+            </Link>
+          </div>
+
+          {/* ================= DESKTOP NAVIGATION ================= */}
+          <nav className="hidden items-center gap-2 sm:flex">
+            <Link
+              href="/"
+              className={`rounded-4xl px-4 py-2 transition ${
+                pathName === "/"
+                  ? "bg-[#4a5243] text-[#C2F800]"
+                  : "hover:bg-[#ffffff10]"
+              }`}
+            >
+              Workouts
+            </Link>
+
+            <Link
+              href="/myPlan"
+              className={`rounded-4xl px-4 py-2 transition ${
+                pathName === "/myPlan"
+                  ? "bg-[#4a5243] text-[#C2F800]"
+                  : "hover:bg-[#ffffff10]"
+              }`}
+            >
+              My Plan
+            </Link>
+          </nav>
+
+          {/* ================= DESKTOP PLAN / SAVED ================= */}
+          <div className="hidden items-center gap-2 sm:flex">
+            <Link href="/myPlan">
+              <button
+                className="
+              cursor-pointer
+              rounded-2xl
+              border border-gray-200
+              px-3 py-1.5
+              text-sm
+              transition
+              hover:bg-[#ffffff10]
+              sm:px-4
+              sm:text-base
+            "
+              >
+                Plan
+                <span
+                  className="
+                ml-2
+                rounded-full
+                bg-[#C2F800]
+                px-2 py-1
+                font-bold
+                text-black
+              "
+                >
+                  {planCount}
+                </span>
+              </button>
+            </Link>
+
+            <Link href="/myPlan">
+              <button
+                className="
+              cursor-pointer
+              rounded-2xl
+              border border-gray-200
+              px-3 py-1.5
+              text-sm
+              transition
+              hover:bg-[#ffffff10]
+              sm:px-4
+              sm:text-base
+            "
+              >
+                Saved
+                <span
+                  className="
+                ml-2
+                rounded-full
+                bg-[#C2F800]
+                px-2 py-1
+                font-bold
+                text-black
+              "
+                >
+                  {saveCount}
+                </span>
+              </button>
+            </Link>
+          </div>
+
+          {/* ================= MOBILE MENU BUTTON ================= */}
+          <button
+            type="button"
+            onClick={() => handelToggleMenu(!menuOpen)}
+            className="flex cursor-pointer items-center text-2xl text-white sm:hidden"
           >
-            Workouts
-          </Link>
-          <Link
-            className={`px-4 py-2 ${pathName === "/myPlan" ? "bg-[#4a5243] rounded-4xl text-[#C2F800]" : ""}`}
-            href="/myPlan"
-          >
-            My Plan
-          </Link>
-        </nav>
-        <div className="hidden sm:flex justify-center items-center gap-2">
-          <Link href="/myPlan">
-            <button className="border px-4 py-1 pr-0.5 cursor-pointer rounded-2xl border-gray-200">
-              Plan{" "}
-              <span className="bg-[#C2F800] px-2 py-1 rounded-full text-black font-bold ml-2 ">
-                {planCount}
-              </span>
-            </button>
-          </Link>
-          <Link href="/myPlan">
-            <button className="border px-4 py-1 pr-0.5 cursor-pointer rounded-2xl border-gray-200">
-              Saved{" "}
-              <span className="bg-[#C2F800] px-2 py-1 rounded-full text-black font-bold ml-2 ">
-                {saveCount}
-              </span>
-            </button>
-          </Link>
+            {menuOpen ? <MdClose /> : <FaBarsStaggered />}
+          </button>
         </div>
-        <div
-          className="sm:hidden text-white flex justify-end text-2xl cursor-pointer"
-          onClick={() => handelToggleMenu(!menuOpen)}
-        >
-          <div>{menuOpen ? <MdClose /> : <FaBarsStaggered />}</div>
-        </div>
+
+        {/* ================= MOBILE MENU ================= */}
+        {menuOpen && (
+          <div className="border-t border-[#ffffff1c] py-5 sm:hidden">
+            {/* Mobile Navigation */}
+            <nav className="flex flex-col items-center gap-2">
+              <Link
+                href="/"
+                onClick={() => handelToggleMenu(false)}
+                className={`w-full rounded-xl px-4 py-3 text-center transition ${
+                  pathName === "/"
+                    ? "bg-[#4a5243] text-[#C2F800]"
+                    : "hover:bg-[#ffffff10]"
+                }`}
+              >
+                Workouts
+              </Link>
+
+              <Link
+                href="/myPlan"
+                onClick={() => handelToggleMenu(false)}
+                className={`w-full rounded-xl px-4 py-3 text-center transition ${
+                  pathName === "/myPlan"
+                    ? "bg-[#4a5243] text-[#C2F800]"
+                    : "hover:bg-[#ffffff10]"
+                }`}
+              >
+                My Plan
+              </Link>
+            </nav>
+
+            {/* Mobile Plan / Saved */}
+            <div className="mt-4 flex justify-center gap-2 border-t border-[#ffffff1c] pt-4">
+              <Link href="/myPlan">
+                <button
+                  onClick={() => handelToggleMenu(false)}
+                  className="
+                cursor-pointer
+                rounded-2xl
+                border border-gray-200
+                px-4 py-2
+                text-sm
+              "
+                >
+                  Plan
+                  <span
+                    className="
+                  ml-2
+                  rounded-full
+                  bg-[#C2F800]
+                  px-2 py-1
+                  font-bold
+                  text-black
+                "
+                  >
+                    {planCount}
+                  </span>
+                </button>
+              </Link>
+
+              <Link href="/myPlan">
+                <button
+                  onClick={() => handelToggleMenu(false)}
+                  className="
+                cursor-pointer
+                rounded-2xl
+                border border-gray-200
+                px-4 py-2
+                text-sm
+              "
+                >
+                  Saved
+                  <span
+                    className="
+                  ml-2
+                  rounded-full
+                  bg-[#C2F800]
+                  px-2 py-1
+                  font-bold
+                  text-black
+                "
+                  >
+                    {saveCount}
+                  </span>
+                </button>
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
-      {menuOpen === true ? <MobileMenuItem /> : null}
     </div>
   );
 };

@@ -4,18 +4,22 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="border-t border-[#ffffff3b] py-4 bg-[#3b3b3b] mt-5 flex justify-between items-center gap-10">
+    <div className="mt-5 flex flex-col items-center justify-between gap-3 border-t border-[#ffffff3b] bg-[#3b3b3b] px-4 py-4 text-center sm:flex-row sm:gap-5 sm:px-6 sm:text-left">
       <div>
-        <Link href="/" className="flex justify-center items-center gap-2">
-          <Image src="/favicon.png" width={20} height={20} alt="Icon" />
+        <Link
+          href="/"
+          className="flex items-center justify-center gap-2 text-sm font-medium sm:justify-start"
+        >
+          <Image src="/favicon.png" width={20} height={20} alt="FitLog Icon" />
           FITLOG
         </Link>
       </div>
+
       <div>
-        <p className="text-[14px] text-[#ffffff98] flex gap-2 flex-wrap justify-end">
-          <span> © 2026 FitLog — </span>
+        <p className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-xs leading-5 text-[#ffffff98] sm:justify-end sm:text-sm">
+          <span>© 2026 FitLog —</span>
           <span>Workout Library.</span>
-          <span> Train hard, log honest.</span>
+          <span>Train hard, log honest.</span>
         </p>
       </div>
     </div>

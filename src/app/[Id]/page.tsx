@@ -23,76 +23,105 @@ const LibraryDetailsPage = async ({ params }: { params: { Id: string } }) => {
   // console.log("data", data);
 
   return (
-    <div className="container mx-auto mt-30 grid grid-cols-1 lg:grid-cols-2 gap-6 justify-center h-fit ">
-      <div className="w-full flex justify-center items-center h-full ">
+    <div className="container mx-auto mt-20 grid h-fit grid-cols-1 gap-6 px-4 sm:px-6 lg:mt-30 lg:grid-cols-2 lg:px-0">
+      {/* Image */}
+      <div className="flex h-full w-full items-center justify-center">
         <Image
-          className="w-full h-full object-cover rounded-4xl"
+          className="h-auto max-h-[600px] w-full rounded-3xl object-cover sm:rounded-4xl"
           src={data.image}
           alt="Images"
           width={300}
           height={300}
         />
       </div>
-      <div className="w-full flex justify-center items-center h-full ">
-        <div className="">
-          <h1 className="text-4xl font-bold">{name}</h1>
-          <p className="text-gray-200 leading-5 my-4">{description}</p>
-          <div className="flex gap-3 mb-5">
+
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="w-full">
+          <h1 className="text-3xl font-bold sm:text-4xl">{name}</h1>
+
+          <p className="my-4 text-sm leading-6 text-gray-200 sm:text-base sm:leading-7">
+            {description}
+          </p>
+
+          <div className="mb-5 flex flex-wrap gap-2 sm:gap-3">
             {muscleGroups.map((group) => (
               <p
-                className="bg-[#C2F800] text-black font-bold px-3 py-1 rounded-4xl"
+                className="rounded-4xl bg-[#C2F800] px-3 py-1 text-sm font-bold text-black sm:text-base"
                 key={group}
               >
                 {group}
               </p>
             ))}
           </div>
-          <div className="flex flex-col gap-5 text-[#9CA3AF] bg-[#1F2937] rounded-3xl p-10 border border-[#80808096]">
-            <div className="flex justify-between items-center">
+
+          {/* Workout Information */}
+          <div className="flex flex-col gap-4 rounded-3xl border border-[#80808096] bg-[#1F2937] p-5 text-sm text-[#9CA3AF] sm:gap-5 sm:p-6 md:p-8 lg:p-10">
+            <div className="flex items-center justify-between gap-4">
               <p>EQUIPMENT</p>
-              <p className="my-2 text-[#9CA3AF]"> {equipment.toUpperCase()}</p>
+              <p className="text-right">{equipment.toUpperCase()}</p>
             </div>
-            <hr className=" h-0.5 text-[#80808096]  mb-5" />
-            <div className="flex justify-between items-center">
-              <p>DIFFICULTY </p>
+
+            <hr className="border-[#80808096]" />
+
+            <div className="flex items-center justify-between gap-4">
+              <p>DIFFICULTY</p>
               <p>{difficulty}</p>
             </div>
-            <hr className=" h-0.5 text-[#80808096]  mb-5" />
-            <div className="flex justify-between items-center">
-              <p>SETS </p>
+
+            <hr className="border-[#80808096]" />
+
+            <div className="flex items-center justify-between gap-4">
+              <p>SETS</p>
               <p>{sets}</p>
             </div>
-            <hr className=" h-0.5 text-[#80808096]  mb-5" />
-            <div className="flex justify-between items-center">
+
+            <hr className="border-[#80808096]" />
+
+            <div className="flex items-center justify-between gap-4">
               <p>REPS</p>
               <p>{reps}</p>
             </div>
-            <hr className=" h-0.5 text-[#80808096]  mb-5" />
-            <div className="flex justify-between items-center">
-              <p>DURATION </p>
+
+            <hr className="border-[#80808096]" />
+
+            <div className="flex items-center justify-between gap-4">
+              <p>DURATION</p>
               <p>{duration}</p>
             </div>
-            <hr className=" h-0.5 text-[#80808096]  mb-5" />
-            <div className="flex justify-between items-center">
-              <p>CALORIES </p>
+
+            <hr className="border-[#80808096]" />
+
+            <div className="flex items-center justify-between gap-4">
+              <p>CALORIES</p>
               <p>{caloriesBurned}</p>
             </div>
-            <hr className=" h-0.5 text-[#80808096]  mb-5" />
-            <div className="flex justify-between items-center">
-              <p>RATING </p>
+
+            <hr className="border-[#80808096]" />
+
+            <div className="flex items-center justify-between gap-4">
+              <p>RATING</p>
               <p>{rating}</p>
             </div>
           </div>
-          <h3 className=" mt-8 text-2xl font-bold mb-2">INSTRUCTIONS</h3>
+
+          {/* Instructions */}
+          <h3 className="mb-2 mt-8 text-xl font-bold sm:text-2xl">
+            INSTRUCTIONS
+          </h3>
+
           <div>
             {instructions.map((text, i) => (
-              <p className="leading-10 text-[#fdfcfc8c]" key={i}>
-                {" "}
+              <p
+                className="text-sm leading-7 text-[#fdfcfc8c] sm:text-base sm:leading-10"
+                key={i}
+              >
                 {i + 1}. {text}
               </p>
             ))}
           </div>
-          <div className="flex  flex-col md:flex-row gap-4 items-center mt-5">
+
+          {/* Buttons */}
+          <div className="mt-5 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
             <AddToTodaysPlanButton data={data} />
             <AddToSaveButton data={data} />
           </div>
