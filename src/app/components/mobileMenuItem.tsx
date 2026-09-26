@@ -1,7 +1,13 @@
 "use client";
+import { context } from "@/context/provider";
 import Link from "next/dist/client/link";
+import { useContext } from "react";
 
 const MobileMenuItem = () => {
+  const { planCount, saveCount } = useContext(context) as {
+    planCount: number;
+    saveCount: number;
+  };
   return (
     <div>
       <div className="bg-[#3B3B3B] rounded-2xl text-white p-4 ">
@@ -23,7 +29,7 @@ const MobileMenuItem = () => {
             <button className="border px-4 py-1 pr-0.5 cursor-pointer rounded-2xl border-gray-200">
               Plan{" "}
               <span className="bg-[#C2F800] px-2 py-1 rounded-full text-black font-bold ml-2 ">
-                0
+                {planCount}
               </span>
             </button>
           </Link>
@@ -31,7 +37,7 @@ const MobileMenuItem = () => {
             <button className="border px-4 py-1 pr-0.5 cursor-pointer rounded-2xl border-gray-200">
               Saved{" "}
               <span className="bg-[#C2F800] px-2 py-1 rounded-full text-black font-bold ml-2 ">
-                0
+                {saveCount}
               </span>
             </button>
           </Link>
