@@ -2,7 +2,7 @@
 
 import { context } from "@/context/provider";
 import PlanSavedButton from "../components/planSavedButton";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 const MyPlanPage = () => {
   const {
@@ -13,6 +13,7 @@ const MyPlanPage = () => {
     saveExercises,
     saveMinutes,
     saveCalories,
+    activeTab,
   } = useContext(context) as {
     exercises: number;
     minutes: number;
@@ -21,9 +22,12 @@ const MyPlanPage = () => {
     saveExercises: number;
     saveMinutes: number;
     saveCalories: number;
+    activeTab: "tody" | "save";
   };
 
-  const [activeTab, setActiveTab] = useState<"plan" | "save">("plan");
+  // console.log(exercises, "exercises", saveExercises, "saveExercises");
+
+  // const [activeTab, setActiveTab] = useState<"plan" | "save">("plan");
 
   return (
     <div className="mt-25 container mx-auto">
@@ -36,19 +40,19 @@ const MyPlanPage = () => {
         <div className="flex flex-col justify-center items-center gap-2">
           <p>Exercises</p>
           <strong className="text-4xl  text-[#CCFF00]">
-            {activeTab === "plan" ? exercises : saveExercises}
+            {activeTab === "tody" ? exercises : saveExercises}
           </strong>
         </div>
         <div className="flex flex-col justify-center items-center gap-2">
           <p>Minutes</p>
           <strong className="text-4xl ">
-            {activeTab === "plan" ? minutes : saveMinutes}
+            {activeTab === "tody" ? minutes : saveMinutes}
           </strong>
         </div>
         <div className="flex flex-col justify-center items-center gap-2">
           <p>Calories</p>
           <strong className="text-4xl ">
-            {activeTab === "plan" ? calories : saveCalories}
+            {activeTab === "tody" ? calories : saveCalories}
           </strong>
         </div>
       </div>

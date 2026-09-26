@@ -16,6 +16,8 @@ const Provider = ({ children }: { children: ReactNode }) => {
   const [saveExercises, setSaveExercises] = useState(0);
   const [saveMinutes, setSaveMinutes] = useState(0);
   const [saveCalories, setSaveCalories] = useState(0);
+  // /////////////////////
+  const [activeTab, setActiveTab] = useState<"tody" | "save">("tody");
   //   console.log(plan, "main provider plan");
   const sharedData = {
     plan,
@@ -38,6 +40,8 @@ const Provider = ({ children }: { children: ReactNode }) => {
     setSaveMinutes,
     saveCalories,
     setSaveCalories,
+    activeTab,
+    setActiveTab,
   };
 
   return <context.Provider value={sharedData}>{children}</context.Provider>;

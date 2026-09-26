@@ -1,20 +1,24 @@
 "use client";
 
 import { context } from "@/context/provider";
-import { useContext, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 import EmptyPlan from "./emptyPlan";
 import TodaysPlan from "./todaysPlan";
 import Save from "./save";
 
 const PlanSavedButton = () => {
   const active = " border-[#9ca3af7c]  text-white bg-[#9ca3af56]";
-  const { plan } = useContext(context) as { plan: IData[] };
+  const { plan, setActiveTab } = useContext(context) as {
+    plan: IData[];
+    setActiveTab: Dispatch<SetStateAction<"tody" | "save">>;
+  };
 
   const [click, setClick] = useState<"tody" | "save">("tody");
   type clickType = "tody" | "save";
 
   const handelClickButton = (userClick: clickType) => {
     setClick(userClick);
+    setActiveTab(userClick);
   };
 
   return (
