@@ -14,12 +14,12 @@ const Save = () => {
       {save.length === 0 ? (
         <EmptyPlan />
       ) : (
-        <div>
+        <div className="">
           {" "}
           {save.map((data) => (
             <div
               key={data.id}
-              className="flex items-center gap-3 rounded-lg bg-[#ffffff0e] p-2.5"
+              className="flex items-center gap-3 mb-3 rounded-lg bg-[#ffffff0e] p-2.5"
             >
               {/* Image */}
               <div className="h-30 w-50 shrink-0 overflow-hidden rounded-md mr-3">
