@@ -27,7 +27,7 @@ const LibraryDetailsPage = async ({ params }: { params: { Id: string } }) => {
       {/* Image */}
       <div className="flex h-full w-full items-center justify-center">
         <Image
-          className="h-auto max-h-[600px] w-full rounded-3xl object-cover sm:rounded-4xl"
+          className="h-auto max-h-150 w-full rounded-3xl object-cover sm:rounded-4xl"
           src={data.image}
           alt="Images"
           width={300}
